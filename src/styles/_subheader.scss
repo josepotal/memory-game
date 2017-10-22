@@ -1,0 +1,27 @@
+.subheader {
+  height: 60px;
+  background: $color-green;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  &-attempts{
+    font-size: 0.6em;
+    color: $color-blue;
+    font-weight: bold;
+  }
+
+  &-restart{
+    button{
+      width: 100%;
+  	  height: 30px;
+  	  font-size: 0.4em;
+  	  display: block;
+      background-color: $color-blue;
+      color: $color-white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+}

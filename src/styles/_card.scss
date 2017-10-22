@@ -1,0 +1,24 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  height: 16%;
+  width: 16%;
+  margin: 3px 6px;
+
+  &:hover{
+    cursor: pointer;
+  }
+  img {
+    border: 1px solid $color-grey;
+    border-radius: 20px;
+    padding: 2px;
+  }
+  // &-front, &-back{
+  //   height: 100%;
+  //   width: 100%;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  // }
+
+}
