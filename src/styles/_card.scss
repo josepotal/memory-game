@@ -1,24 +1,66 @@
 .card {
-  display: flex;
-  flex-direction: row;
-  height: 16%;
+  margin: 5px 10px;
+  $card-size:8rem;
   width: 16%;
-  margin: 3px 6px;
-
+  height: 16%;
   &:hover{
     cursor: pointer;
   }
-  img {
-    border: 1px solid $color-grey;
-    border-radius: 20px;
-    padding: 2px;
-  }
-  // &-front, &-back{
-  //   height: 100%;
-  //   width: 100%;
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  // }
 
+  &-front, &-back{
+    img {
+      border: 1px solid $color-grey;
+      border-radius: 20px;
+      padding: 2px;
+      height: $card-size;
+      width: $card-size;
+    }
+  }
+}
+
+
+//media query medium screens
+@media screen and (max-width: 920px) and (min-width: 475px) {
+  .card {
+    margin: 2px 4px;
+    $card-size: 100px;
+    width: 22%;
+    height: 22%;
+    &:hover{
+      cursor: pointer;
+    }
+
+    &-front, &-back{
+      img {
+        border: 1px solid $color-grey;
+        border-radius: 20px;
+        padding: 2px;
+        height: $card-size;
+        width: $card-size;
+      }
+    }
+  }
+}
+
+//media query small screens
+@media screen and (max-width: 475px) {
+  .card {
+    margin: 2px 4px;
+    $card-size: 70px;
+    width: 22%;
+    height: 22%;
+    &:hover{
+      cursor: pointer;
+    }
+
+    &-front, &-back{
+      img {
+        border: 1px solid $color-grey;
+        border-radius: 20px;
+        padding: 2px;
+        height: $card-size;
+        width: $card-size;
+      }
+    }
+  }
 }

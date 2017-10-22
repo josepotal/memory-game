@@ -14,26 +14,52 @@ body {
   background-color: #0f1a35; }
 
 .card {
-  display: flex;
-  flex-direction: row;
-  height: 16%;
+  margin: 5px 10px;
   width: 16%;
-  margin: 3px 6px; }
+  height: 16%; }
   .card:hover {
     cursor: pointer; }
-  .card img {
+  .card-front img, .card-back img {
     border: 1px solid #ddd;
     border-radius: 20px;
-    padding: 2px; }
+    padding: 2px;
+    height: 8rem;
+    width: 8rem; }
+
+@media screen and (max-width: 920px) and (min-width: 475px) {
+  .card {
+    margin: 2px 4px;
+    width: 22%;
+    height: 22%; }
+    .card:hover {
+      cursor: pointer; }
+    .card-front img, .card-back img {
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 2px;
+      height: 100px;
+      width: 100px; } }
+
+@media screen and (max-width: 475px) {
+  .card {
+    margin: 2px 4px;
+    width: 22%;
+    height: 22%; }
+    .card:hover {
+      cursor: pointer; }
+    .card-front img, .card-back img {
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 2px;
+      height: 70px;
+      width: 70px; } }
 
 .board {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  height: 100%;
-  vertical-align: middle;
-  margin: 5% 2%; }
+  margin: 3% 2%; }
 
 .header {
   height: 60px;
