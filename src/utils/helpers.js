@@ -7,6 +7,7 @@ export const getInitialState = () => {
     pairSelected: [],
     checking: false,
     attempts: 0,
-    modal: false
+    modal: false,
+    seconds: 0
   };
 };

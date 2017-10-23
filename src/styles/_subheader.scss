@@ -6,9 +6,17 @@
   align-items: center;
 
   &-attempts{
-    font-size: 0.6em;
+    font-size: 0.5em;
     color: $color-blue;
     font-weight: bold;
+    p {
+      margin: 0 ;
+    }
+  }
+
+  &-stopwatch{
+    @extend .subheader-attempts;
+    font-size: 0.6em;
   }
 
   &-restart{

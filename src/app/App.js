@@ -14,7 +14,12 @@ class App extends Component {
     this.state = getInitialState();
     this.resetGame = this.resetGame.bind(this);
     this.cardSelection = this.cardSelection.bind(this);
-    }
+  }
+
+  componentDidMount() {
+    this.stopTime();
+    this.startTime();
+  }
 
   cardSelection(card) {
     if (card.found || this.state.checking ||
@@ -64,28 +69,52 @@ class App extends Component {
       this.setState({
         modal: true
       });
+      this.stopTime();
       if (!localStorage.bestMark) {
         localStorage.setItem('bestMark', this.state.attempts)
+      }
+      if (!localStorage.bestTime) {
+
+        localStorage.setItem('bestTime', this.state.seconds)
       }
       if (localStorage.bestMark && localStorage.bestMark > this.state.attempts) {
         localStorage.setItem('bestMark', this.state.attempts)
       }
+      if (localStorage.bestTime && localStorage.bestTime > this.state.seconds) {
+        localStorage.setItem('bestTime', this.state.seconds)
+      }
     }
+
   }
 
   resetGame() {
     this.setState(getInitialState());
+    this.stopTime();
+    this.startTime();
+  }
+
+  //chronometer functions
+  startTime = () => {
+      this.counter = setInterval(() => {
+      this.setState({
+        seconds: (this.state.seconds + 1)
+      });
+    }, 1000)
+  }
+
+  stopTime= () => {
+    clearInterval(this.counter)
   }
 
   render() {
-    const {attempts, board, pairSelected, modal} = this.state;
-    console.log(localStorage.bestMark)
+    const {attempts, board, pairSelected, modal, seconds} = this.state;
     return (
       <div className="App">
         <Header />
         <SubHeader
           attempts={attempts}
           resetGame={this.resetGame}
+          seconds={seconds}
         />
         <MessageModal
           open={modal}

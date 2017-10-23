@@ -78,10 +78,14 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center; }
-  .subheader-attempts {
-    font-size: 0.6em;
+  .subheader-attempts, .subheader-stopwatch {
+    font-size: 0.5em;
     color: #1B2E5C;
     font-weight: bold; }
+    .subheader-attempts p, .subheader-stopwatch p {
+      margin: 0; }
+  .subheader-stopwatch {
+    font-size: 0.6em; }
   .subheader-restart button, .modal-close-button button {
     width: 100%;
     height: 30px;
