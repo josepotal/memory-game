@@ -82,7 +82,7 @@ body {
     font-size: 0.6em;
     color: #1B2E5C;
     font-weight: bold; }
-  .subheader-restart button {
+  .subheader-restart button, .modal-close-button button {
     width: 100%;
     height: 30px;
     font-size: 0.4em;
@@ -104,3 +104,25 @@ body {
     font-size: 0.4em;
     font-weight: bold;
     color: #1B2E5C; }
+
+.modal {
+  margin: 0 auto;
+  margin-top: 60px;
+  height: 200px;
+  width: 300px;
+  background-color: #b3d69c;
+  border-radius: 10px;
+  border: 2px solid #1B2E5C;
+  text-align: center; }
+  .modal h1 {
+    color: #1B2E5C;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-size: 20px; }
+  .modal-close-button {
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 50%; }
+    .modal-close-button button {
+      height: 48px;
+      font-size: 18px; }

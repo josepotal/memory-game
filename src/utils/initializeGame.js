@@ -1,6 +1,3 @@
-
-//const figuresFolder = '../assets/figures';
-
 let arrayCards = []
 for (var i =1; i<11; i++){
   var cardImg = require(`../assets/figures/${i}.png`)

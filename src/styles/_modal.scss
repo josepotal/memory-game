@@ -1,0 +1,28 @@
+.modal {
+  margin: 0 auto;
+  margin-top: 60px;
+  height: 200px;
+  width: 300px;
+  background-color: lighten($color-green, 20%);
+  border-radius: 10px;
+  border: 2px solid $color-blue;
+  text-align: center;
+
+  h1 {
+    color: $color-blue;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-size: 20px;
+  }
+  &-close-button {
+    @extend .subheader-restart;
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 50%;
+    button {
+      height: 48px;
+      font-size: 18px;
+    }
+
+  }
+}

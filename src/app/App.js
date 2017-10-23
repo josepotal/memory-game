@@ -4,32 +4,21 @@ import Header from './Header';
 import SubHeader from './SubHeader';
 import Board from './Board';
 import Footer from './Footer';
+import MessageModal from './MessageModal';
 
-import initBoard from '../utils/initializeGame';
-
-const getInitialState = () => {
-  const board = initBoard;
-  return {
-    board,
-    pairSelected: [],
-    checking: false,
-    attempts: 0
-  };
-};
-
+import {getInitialState} from '../utils/helpers';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = getInitialState();
-  }
+    this.resetGame = this.resetGame.bind(this);
+    this.cardSelection = this.cardSelection.bind(this);
+    }
 
   cardSelection(card) {
-    if (
-      this.state.checking ||
-      this.state.pairSelected.indexOf(card) > -1 ||
-      card.found
-    ) {
+    if (card.found || this.state.checking ||
+      this.state.pairSelected.indexOf(card) !== -1) {
       return;
     }
 
@@ -58,19 +47,29 @@ class App extends Component {
           return { ...card, found: true };
         });
       }
-      this.endGame(board);
+
       this.setState({
         pairSelected: [],
         board,
         checking: false,
         attempts: this.state.attempts + 1
       });
+
+      this.endGame(board);
     }, 1000);
   }
 
   endGame(board) {
     if (board.filter(card => !card.found).length === 0) {
-      alert(`You made it in ${this.state.attempts} attempts`);
+      this.setState({
+        modal: true
+      });
+      if (!localStorage.bestMark) {
+        localStorage.setItem('bestMark', this.state.attempts)
+      }
+      if (localStorage.bestMark && localStorage.bestMark > this.state.attempts) {
+        localStorage.setItem('bestMark', this.state.attempts)
+      }
     }
   }
 
@@ -79,17 +78,24 @@ class App extends Component {
   }
 
   render() {
+    const {attempts, board, pairSelected, modal} = this.state;
+    console.log(localStorage.bestMark)
     return (
       <div className="App">
         <Header />
         <SubHeader
-          attempts={this.state.attempts}
-          resetGame={() => this.resetGame()}
+          attempts={attempts}
+          resetGame={this.resetGame}
+        />
+        <MessageModal
+          open={modal}
+          attempts={attempts}
+          closeModal={this.resetGame}
         />
         <Board
-          board={this.state.board}
-          pairSelected={this.state.pairSelected}
-          cardSelection={card => this.cardSelection(card)}
+          board={board}
+          pairSelected={pairSelected}
+          cardSelection={this.cardSelection}
         />
         <Footer />
       </div>
